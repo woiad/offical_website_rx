@@ -8,3 +8,9 @@ pip install -r requirements.txt
 mysql.server start   #启动mysql服务
 
 #后直接运行 flask run 项目启动
+
+# 注意
+
+配置文件 config.py里面的SQLALCHEMY_DATABASE_URI配置的是数据库连接的
+
+mysql+pymysql://root(连接数据库的用户名):password(密码)@localhost:3306(地址:端口)/数据库名字
