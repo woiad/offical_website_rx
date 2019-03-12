@@ -1,0 +1,156 @@
+{% extends 'home/layout.html' %}
+
+
+{% import 'ui/nav.html' as nav %}
+
+{% block content %}
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li>
+                        支付方式
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+                {{ nav.active('pay', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 mg-40">
+                    <div class="news-navbar account-nav clear_fix">
+                        <ul>
+                            <li class="active"><a href="javascript:;">其他账户</a></li>
+                            <li><a href="javascript:;">公司账户</a></li>
+                        </ul>
+                    </div>
+                    <div class="other-account account">
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_7.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：广东锐讯网络有限公司</p>
+                                    <p>银行账号：8190 0036 2302 011</p>
+                                    <p>开户银行：广州银行东莞分行营业部</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_2.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：黄泽杏</p>
+                                    <p>银行账号：6228 4806 0676 3068 875</p>
+                                    <p>开户银行：中国农业银行东莞东骏分理处</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_3.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：黄泽杏</p>
+                                    <p>银行账号：6236 6832 3000 7210 090</p>
+                                    <p>开户银行：东莞建设银行南城高盛支行</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_4.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：黄泽杏</p>
+                                    <p>银行账号：6216 6070 0000 5252 203</p>
+                                    <p>开户银行：中国银行东莞南城区宏图路支行</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_5.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：温国洪</p>
+                                    <p>银行账号：6214 8576 7047 2226</p>
+                                    <p>开户银行：中国招商银行东莞石碣支行</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_1.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：黄泽杏</p>
+                                    <p>银行账号：6222 0320 1001 1041 055</p>
+                                    <p>开户银行：工商银行东莞南城支行</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_6.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <img src="{{ url_for('static', filename='images/pay/wechat_new.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/wechat_left.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <img src="{{ url_for('static', filename='images/pay/wechat_new.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="company-account account">
+                        <div class="account-item col-md-6 col-sm-12 col-xs-12">
+                            <div class="account-container wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                <div class="img-box">
+                                    <img src="{{ url_for('static', filename='images/pay/zf_3.jpg') }}">
+                                </div>
+                                <div class="text">
+                                    <p>开户名称：广东锐讯网络有限公司</p>
+                                    <p>银行账号：4400 1776 2080 5099 1268</p>
+                                    <p>开户银行：建设银行东莞市东城支行</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

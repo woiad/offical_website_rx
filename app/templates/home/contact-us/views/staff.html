@@ -1,0 +1,55 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/home_page.html' as pg %}
+
+{% import 'ui/nav.html' as nav %}
+
+{% block content %}
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li>
+                        员工风采
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+                {{ nav.active('staff', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 staff-list mg-40">
+                    {% for staff in staff_list.items %}
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="staff-item">
+                            <a class="img" href="{{ url_for('article_detail', id=staff.id) }}">
+                                <img src="{{ url_for('static', filename='uploads/' + staff.cover_img) }}">
+                            </a>
+                            <h1><a href="{{ url_for('article_detail', id=staff.id) }}">{{ staff.title }}</a></h1>
+                            <p>{{ staff.info }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {{ pg.page(staff_list, 'staff') }}
+        </div>
+    </section>
+
+{% endblock %}

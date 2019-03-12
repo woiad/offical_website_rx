@@ -1,0 +1,88 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Vistor machine room</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="index.html">首页</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('vistor_room') }}">参观锐讯机房</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="our-services style-2 vistor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/machine-room/jifang.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>佛山顺德电信机房</h4>
+                            <ul>
+                                <li>
+                                    <p>数据中心等级：<span style="color: #FB8117">★★★★</span></p>
+                                </li>
+                                <li>
+                                    <p>电力保障：<span>双路市电及UPS动力供应保障</span></p>
+                                </li>
+                                <li>
+                                    <p>出口带宽:<span>电信900Gbps 数据中心</span></p>
+                                </li>
+                                <li>
+                                    <p>测试IP：<span>请联系售前客服获取</span></p>
+                                </li>
+                                <li>
+                                    <p>咨询电话：<span>0769-22502222（总机）</span></p>
+                                </li>
+                                <li>
+                                    <p>服务支持：<span>7X24小时全年无休服务支持、真正的全天驻场工程师、实时详细的网络监控</span></p>
+                                </li>
+                                <li>
+                                    <p>联系地址：<span>中国广东省东莞市南城区宏图路高盛科技园103号</span></p>
+                                </li>
+                            </ul>
+                            <a href="{{ url_for('vistor_room') }}" class="thm-btn thm-btn-small" style="margin-top: 2%">返回上一页 >></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="data-introd">
+                    <h1>数据中心介绍</h1>
+                    <br />
+                    <p>佛山德胜数据中心坐落广东省佛山市顺德区德胜新区拥翠路1号,区位优势明显,交通便利.数据中心硬件
+                        设施一流,具备完善电力系统、消防系统以及实时的环境监控体系。在管理制度上也秉承了同等级数据中心
+                        一贯的严谨、细致。在网络方面，佛山机房采用高级网络交换和路由设备，确保了网络通信的稳定。另外，
+                        主要面向企业用户，网络环境优良，带宽充足。佛山德胜数据中心出口带宽220G的进口带宽，占地面积达3
+                        千多平米，拥有大量机柜，其电信带宽主要授权商是广东锐讯网络，锐讯在多年的数据中心管理中积累了丰
+                        富的经验，7X24小时全年无休服务支持、真正的全天驻场工程师、实时详细的网络监控，这些都足以让您
+                        放心的享受锐讯在佛山德胜数据中心提供的网络服务。 数据中心网络采用CISCO标准网络设计方法，
+                        将网络分为边缘、核心、接入三层。网络结构采用全网全冗余结构，构建国际领先的一流的网络基础设施。
+                        这里租用的机柜带宽等业务的经典品牌商家有奇虎360、乐视网等.和需求的大量带宽、安全的大型商家。
+                        是广东最大的IDC数据中心之一！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

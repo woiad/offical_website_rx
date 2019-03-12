@@ -1,0 +1,157 @@
+{% extends 'home/layout.html' %}
+
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>value added services</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="our-services style-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq1.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>智能监控服务Intelligent monitoring and control services</h4>
+                            <p>
+                                服务器的相关系列自动关联识别，使用户把握监控出现问题，锐讯将7*24帮助您管理服务器并保证应用的正常运行。锐讯都有专业的工程师为您提供针对性的服务，无论您使用的是个人网站还是企业系统。
+                            </p>
+                            <p>
+                                1、存活监控（Monitoring survival）无时无刻了解设备运行状态，响应运维突发事件。为您提供ICMP的响应存活监控、TCP connect业务存活监控、TCP 80，8080，21，23，25，22，3389，443，3306，1433端口支持、15分钟监控轮循、监控报表查看等服务。
+                            </p>
+                            <p>
+                                2、性能监控（Performance Monitoring）时刻响应容量危机，发现容量瓶颈，辅助容量规划设计。为您提供CPU运算性能使用率监控、内存交互容量使用率监控、磁盘空间使用率监控、15分钟监控轮循等服务。
+                            </p>
+                            <p>
+                                3、自定义服务（Custom Service）对监控轮询周期，告警方式、告警时间、监控服务等级，进行按需定制。可定制5分钟监控周期轮循、自定义监控告警阀值、7*24Email告警通知、7*24 短信告警通知、7*24
+                                电话告警通知、一年监控历史记录、五年监控历史记录、十年监控历史记录，可根据实际需求主灵活进行定制。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq2.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>DDos清理服务DDos cleaning services</h4>
+                            <p>
+                                DDoS流量清洗解决方案为您提供40Gbps流量清洗，7天特征学习周期，15分钟清洗响应时间，可以防御PING OF DEATH攻击、TEARDROP攻击、UDP FLOOD攻击、SYN FLOOD攻击、LAND ATTACK攻击、CC攻击等多种攻击类型。 我们在佛山电信城域核心网络部署超大规模DDos防御中心，实现超过40Gbps的超强清洗能力。
+                                下单4小时即可开通DDos清洗动能快速保护安全系统。智能系统自动学习系统业务特征，精确保护业务流量。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq3.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>防火墙服务Firewall service</h4>
+                            <p>
+                                锐讯IDC防火墙ACL标准服务包含物理防火墙的基础属性提供，同时包含防火
+                                墙标准软件授权。用户使用ACL标准服务，锐讯IDC将指派专职运维工程师配
+                                合用户分析用户安全需求，为用户业务定制优化的ACL策略，提高用户业务安
+                                全性。ACL策略可根据业务TCP/UDP端口定制，可根据源IP/目的IP定制，
+                                严格控制用户业务的安全访问。 IPSec VPN服务可为用户部署和管理基于
+                                IPSec协议的VPN通道，帮助用户建立多点PtoP VPN与拨号VPN。从而实现
+                                高安全性的服务器/网络管理与重要数据传输。 PtoP VPN：指在两部防火墙
+                                之间建立稳定的VPN通道，可用于多个IDCIDC或用户办公网络与IDC之间的安全连接。
+                                拨号VPN：指用户通过笔记本或办公电脑直接进行VPN拨号，建立临时的VPN安全通道，
+                                多用于管理员与IDC之间的临时维护需求。 更多服务请联系客服。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq3.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>负载均衡服务Load balancing service</h4>
+                            <p>
+                                锐讯网络为您提供负载均衡支持，包含所有TCP或UDP端口负载均衡、无会话保持负载均衡
+                                于Cookie的会话保持负载均衡、基于源IP会话保持负载均衡、7*24负载均衡策略及配置、4小时故障恢复、7*24电话/在线支持。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq1.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>服务器管家服务Server butler service</h4>
+                            <p>
+                                锐讯网络为您提供操作系统故障分析与排查、硬件故障技术支持、Web软件环境布置、Web软件环境故障分析与排查、服务器UP
+                                Time监控、服务器性能监控、7*8专属工程师支持、7*24电话/在线支持等等服务。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/service/yunaq1.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4>数据备份服务Data backup service</h4>
+                            <p>
+                                锐讯网络为您提供数据备份服务，让您的数据安全提供安心无忧保障。包括：
+                                文件备份 XT、JPG、GIF、DOC、XLS等常规或非常规文档文件、EXE、HTML、
+                                ASP、JSP、CGI等常规或非常规程序文件、其他各种静态文件，覆盖所有常见文件。
+                                MySQL备份 MySQL数据库，数据库文件备份（增量、完全）、MySQL数据库，数据库文件备份
+                                （增量、完全）、MySQL数据库，数据库表内容差异备份、MySQL数据库，数据库操作日志备份。
+                                MSSQL备份 MSSQL数据库，数据库文件备份、MSSQL数据库，数据库表内容备份（差异、完全）、
+                                MSSQL数据库，数据库操作日志备份（差异、完全）。 Oracle备份 Oracle数据库，数据库文件
+                                备份（增量、完全）、Oracle数据库，数据库表内容备份（差异、完全）、Oracle数据库，数据库
+                                操作日志备份（增量、完全）。
+                            </p>
+                            <a href="javascript:;" class="thm-btn thm-btn-small kf-btn" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

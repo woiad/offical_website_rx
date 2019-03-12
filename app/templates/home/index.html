@@ -1,0 +1,377 @@
+﻿{% extends 'home/layout.html' %}
+
+{%block content%}
+<section class="slider_wrapper">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="{{ url_for('static', filename='images/banner/banner1.jpg') }}" alt="First slide">
+        </div>
+        <div class="item">
+          <img class="second-slide" src="{{ url_for('static', filename='images/banner/banner2.jpg') }}" alt="Second slide">
+        </div>
+        <div class="item">
+          <img class="third-slide" src="{{ url_for('static', filename='images/banner/banner3.jpg') }}" alt="Third slide">
+        </div>
+          <div class="item">
+          <img class="third-slide" src="{{ url_for('static', filename='images/banner/banner4.jpg') }}" alt="Third slide">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="fa fa-angle-right" aria-hidden="true" style="left: 0"></span>
+      </a>
+    </div>
+    <div class="news-info">
+        <div class="news-container">
+            <h1>新闻公告：</h1>
+            <ul id="news-roll">
+                {% for adv in adv_list %}
+                <li>
+                    <p><a href="{{ url_for('article_detail', id=adv.id) }}">{{ adv.title }}</a><span>{{ adv.release_time }}</span></p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="why-choose sec-padd">
+    <div class="container">
+        <div class="section-title center">
+            <h2>为什么选择锐讯</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/chose/cpys_1.png') }}" alt="">
+                    <h4>快速，服务器租用无需等待！</h4>
+                    <div class="text">
+                        <p>锐讯承诺为用户提供“下单即上架”的快速服务器租用交付服务针对"有现货"的服务器型号。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/chose/cpys_2.png') }}" alt="">
+                    <h4>高效，四小时恢复故障服务器正常运作！</h4>
+                    <div class="text">
+                        <p>为客户提供真正的7*24服务，锐讯有能力保障在4小时内修复服务器的任何硬件故障!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/chose/cpys_3.png') }}" alt="">
+                    <h4>稳定，世界级的互联网数据中心（IDC）</h4>
+                    <div class="text">
+                        <p>多年的数据中心服务经验沉淀，让锐讯在IDC选址、设计、规划、运营和管理等领域都走在行业的前列。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/chose/cpys_4.png') }}" alt="">
+                    <h4>安全，全国最强硬件防火墙！</h4>
+                    <div class="text">
+                        <p>锐讯重金打造240G硬件防火墙，加上公司不断的设备投入，使锐讯在全国硬件防火墙防御优势始终处于领先优势。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="advantage sec-padd">
+    <div class="container">
+        <h1>我们的优势</h1>
+        <h2>为什么选择锐讯网络，我们都有哪些安全保障！</h2>
+        <ul>
+            <li>
+                <i></i>
+                <p>网络资源</p>
+            </li>
+            <li>
+                <i></i>
+                <p>云计算</p>
+            </li>
+            <li>
+                <i></i>
+                <p>网络安全</p>
+            </li>
+            <li>
+                <i></i>
+                <p>售后支撑</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="product sec-padd">
+    <div class="container">
+        <div class="section-title center">
+            <h2>锐讯产品</h2>
+            <p>存储、计算、监控、安全...你所需要的一切云产品</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/product/i_cp1.png') }}" alt="">
+                    <h4>服务器租用</h4>
+                    <div class="text">
+                        <p>单线、双线、三线多种线路接入</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/product/i_cp2.png') }}" alt="">
+                    <h4>服务器托管</h4>
+                    <div class="text">
+                        <p>品牌服务器、双核四核八核服务器 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <img src="{{ url_for('static', filename='images/product/i_cp4.png') }}" alt="">
+                    <h4>高防服务器</h4>
+                    <div class="text">
+                        <p>SYN CC DNS 各种攻击到此为止 </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="about-info sec-padd">
+                    <div class="section-title">
+                        <h2>热门机型</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="latest-project-carousel owl-carousel owl-theme">
+                {% for item in hot_server_list %}
+                <div class="item">
+                    <div class="single-latest-project-carousel">
+                        <div class="hot-product">
+                            <h1>{{ item.title }}</h1>
+                            <h2>￥<span>{{ item.price | extract_num }} </span>{{ item.price | extract_unit }}</h2>
+                            <ul class="product-detail">
+                                <li><p>CPU： {{ item.cpu }}</p></li>
+                                <li><p>内存： {{ item.memory }}</p></li>
+                                <li><p>硬盘： {{ item.disk }}</p></li>
+                                <li><p>带宽： {{ item.bdwidth }}</p></li>
+                                <li><p>{{ item.server_region }}节点</p></li>
+                            </ul>
+                            <a class="buy">立即开通</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="divide"></section>
+<section class="testimonials-section sec-padd news-list">
+    <div class="container">
+        <div class="section-title center">
+            <h2>新闻资讯</h2>
+        </div>
+
+        <!--Slider-->
+        <div class="testimonials-slider column-carousel three-column">
+
+            <!--Slide-->
+            {% for new in new_list %}
+            <article class="slide-item">
+                <div class="quote"><span class="icon-left"></span></div>
+                <div class="author">
+                    <h3>
+                        <a href="{{ url_for('article_detail', id=new.id) }}">{{ new.title }}
+                        </a>
+                    </h3>
+                    <p>{{ new.release_time }}</p>
+                </div>
+                <div class="slide-text">
+                    <div class="img">
+                        <a href="{{ url_for('article_detail', id=new.id) }}">
+                            <img src="{{ url_for('static', filename='uploads/' + new.cover_img) }}">
+                        </a>
+                    </div>
+                    <p>{{ new.info }}</p>
+                </div>
+            </article>
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+</section>
+
+<section class="gold-server sec-padd-top">
+    <div class="container">
+        <div class="section-title center">
+            <h2>金牌服务</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_1.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">多年实战</div>
+                        <div class="text">
+                            <p>经验从环境到安全以及应急问题，拥有多年实战经验快速分析故障并处理。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_2.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">独特的安全方案</div>
+                        <div class="text">
+                            <p>自主研发多款安全产品便捷一体化的执行工具，让您得心应手。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_3.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">一对一服务</div>
+                        <div class="text">
+                            <p>为客户提供一对一技术支持，快速了解客户需求，及时处理问题。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_4.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">安全加固套餐</div>
+                        <div class="text">
+                            <p>针对新系统部署网站环境以及安全加固，预先防护安全威胁，阻止黑客入侵。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_5.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">长年安全顾问</div>
+                        <div class="text">
+                            <p>针对服务器常年维护，及时处理故障，减少故障损失。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="default-blog-news wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/jpfw/jpfw_6.png') }}" alt="News">
+                    </div>
+                    <div class="lower-content">
+                        <div class="post-meta">贴心节约成本</div>
+                        <div class="text">
+                            <p>提供单次以及包月包年等维护，为客户量身选择，为您节约成本。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container"><div class="border-bottom"></div></div>
+
+<section class="clients-section sec-padd">
+    <div class="container">
+        <div class="section-title">
+            <h2>合作伙伴</h2>
+        </div>
+        <div class="client-carousel owl-carousel owl-theme">
+
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s1.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s2.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s3.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s4.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s5.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s6.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s7.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s8.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s9.jpg') }}">
+            </div>
+            <div class="item tool_tip">
+                <img src="{{ url_for('static', filename='images/partner/hz_s10.jpg') }}">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

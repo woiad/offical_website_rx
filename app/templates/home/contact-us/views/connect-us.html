@@ -1,0 +1,101 @@
+{% extends 'home/layout.html' %}
+
+
+{% import 'ui/nav.html' as nav %}
+
+{% block content %}
+
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li>
+                        联系我们
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+               {{ nav.active('connect', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 mg-40">
+                    <div class="connect-way">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="connect-item">
+                                <div class="connect-icon">
+                                    <i  class="fa fa-phone"></i>
+                                </div>
+                                <div class="text">
+                                    <p>总机热线：0769-22502222</p>
+
+                                    <p>24小时售后网维：18928666777</p>
+
+                                    <p>总机： 0769-22502222</p>
+
+                                    <p>网维热线： 0769-22502222-8002</p>
+
+                                    <p>值班热线： 18928 666 7777</p>
+
+                                    <p>投诉热线： 0769-22502222</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="connect-item">
+                                <div class="connect-icon">
+                                    <i  class="fa fa-envelope-square"></i>
+                                </div>
+                                <div class="text">
+                                    <p>传 真：0769-22101333</p>
+
+                                    <p>邮箱： webmaster@ruixunidc.net</p>
+
+                                    <p>企业政企网站： http://www.ruixunidc.com</p>
+
+                                    <p>企业产品网站： http://www.ruixunidc.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="connect-item">
+                                <div class="connect-icon">
+                                    <i  class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="text">
+                                    <p>地址： 东莞市南城区周溪隆溪路5号高盛科技园 二期之高盛科技大厦1楼103室</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="map">
+                    <div style="width:100%;height:500px;font-size:12px" id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}

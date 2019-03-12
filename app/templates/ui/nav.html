@@ -1,0 +1,18 @@
+{% macro active(name, data) -%}
+<div class="nav-left col-md-2 col-sm-3 col-xs-12">
+    <h1>关于我们<i class="fa fa-angle-down"></i></h1>
+    <ul>
+        {% for item in data %}
+            {% if item.active == name %}
+                <li class="active">
+                    <a href="{{ url_for(item.href) }}">{{ item.name }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ url_for(item.href) }}">{{ item.name }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{%- endmacro %}

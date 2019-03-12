@@ -1,0 +1,40 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Discount Detail</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('discount') }}">优惠促销</a>
+                    </li>
+                    <li>
+                        优惠详情
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd faq bg-f7">
+        <div class="container">
+            <div class="art-wrapper">
+                <div class="art-part" style="text-align: center">
+                    {{ discount.discount_content | safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

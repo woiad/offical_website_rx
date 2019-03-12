@@ -1,0 +1,50 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Article Detail</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        文章详情
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd faq bg-f7">
+        <div class="container">
+            <div class="art-wrapper">
+                <div class="art-title">
+                    <h1>{{ article.title }}</h1>
+                    <p><span>发布时间：{{ article.release_time }}  </span>浏览次数：{{ article.click_count }}</p>
+                </div>
+                <div class="art-part">
+                    {{ article.article_content | safe }}
+                </div>
+
+                <div class="art-footer">
+                    {% if pre_article %}
+                    <a href="{{ url_for('article_detail', id=pre_article.id) }}" class="prev-art"><span>上一篇：</span>{{ pre_article.title }}</a>
+                    {% endif %}
+                    {% if next_article %}
+                     <a href="{{ url_for('article_detail', id=next_article.id) }}" class="next-art"><span>下一篇：</span>{{ next_article.title }}</a>
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/nav.html' as  nav%}
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li>
+                        资源证书
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+                {{ nav.active('book', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 cerit-book mg-40">
+                    <div class="latest-project-carousel owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="single-latest-project-carousel">
+                                <img src="{{ url_for('static', filename='images/about-us/suiwu.jpg') }}">
+                                <p>税务登记证书</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="single-latest-project-carousel">
+                                <img src="{{ url_for('static', filename='images/about-us/yinye.jpg') }}">
+                                <p>营业执照</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="single-latest-project-carousel">
+                                <img src="{{ url_for('static', filename='images/about-us/zzdx.jpg') }}">
+                                <p>国家增值电信业务经营许可证（ISP证）</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="single-latest-project-carousel">
+                                <img src="{{ url_for('static', filename='images/about-us/zzjg.jpg') }}">
+                                <p>组织机构证书</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/home_page.html' as pg %}
+
+{% block content %}
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Discount Sales</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="discount-sales sec-padd">
+        <div class="container">
+            <div class="discount-list">
+                {% for discount in discounts.items %}
+                <div class="discount-item wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                    <div class="img-box">
+                        <a href="{{ url_for('discount_detail', id=discount.id) }}">
+                            <img src="{{ url_for('static', filename='uploads/' + discount.cover_img) }}">
+                        </a>
+                    </div>
+                    <div class="text">
+                        <h1>{{ discount.title }}</h1>
+                        <p>{{ discount.info }}</p>
+                    </div>
+                    {% if discount.active == 2 %}
+                    <div class="active-tip">
+                        <span>
+                            <i class="fa fa-clock-o"></i>
+                            2019-02-18 至 2019-02-28
+                        </span>
+                        <a class="thm-btn thm-btn-small" href="{{ url_for('discount_detail', id=discount.id) }}">活动进行中</a>
+                    </div>
+                    {% else %}
+                    <div class="active-tip un-active">
+                         <a class="thm-btn thm-btn-small">活动已结束</a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {{ pg.page(discounts, 'discount') }}
+        </div>
+    </section>
+
+{% endblock %}

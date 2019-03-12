@@ -1,0 +1,48 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/search_page.html' as pg %}
+
+{% block content %}
+<section class="search sec-padd">
+    <div class="container">
+        <div class="inp_sear">
+        <form action="{{ url_for('search_result') }}" class="search-form" method="post">
+            <input type="text" placeholder="Search..." id="searct_text" name="search_str">
+            <button class="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+    </div>
+    </div>
+</section>
+<section class="search-result">
+    <div class="container">
+        <div class="search-content">
+            <div class="section-title center">
+              <h2>搜索结果</h2>
+            </div>
+            <div class="tab-hd">
+                <ul>
+                    <li class="active">
+                        <a href="javascript:;">文章<span>（{{ art_total }}）</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('search_pro', str=str) }}">产品<span>（{{ pro_total }}）</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="article animated fadeIn">
+                    <ul>
+                        {% for article in articles %}
+                        <li>
+                            <h1><a href="{{ url_for('article_detail', id=article.id) }}">{{ article.title }}</a></h1>
+                            <p>{{ article.info }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {{ pg.page(pages, 'search_result', current_page, str, art_total_page) }}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

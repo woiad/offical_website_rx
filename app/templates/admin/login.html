@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>官网管理系统</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/skin/blue.css') }}">
+    <style>
+        html, body{
+            position: relative;background-image: url('../static/images/bg.jpg');background-repeat: no-repeat;background-size: 100% 100%;
+        }
+        .login-page, .register-page{
+            background: none;
+        }
+        .login-box, .register-box{
+           position: absolute;right: 5%;margin-top: 20%;background: rgba(255, 255, 255, .5);border-radius: 5px;
+        }
+        .login-logo, .register-logo{
+            padding: 15px 0 15px 15px;margin-bottom: 0;font-size: 14px;color: #17233d;font-weight: 700;
+            border-bottom: 1px solid #e8eaec;text-align: left;
+        }
+        .login-box-body, .register-box-body{
+            background: none;
+        }
+    </style>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href=""><b>欢迎登陆</b></a>
+    </div>
+    <div class="login-box-body">
+        {% for mesg in get_flashed_messages() %}
+        <p class="login-box-msg" style="color: red">{{ mesg }}</p>
+        {% endfor %}
+        <form action="" method="post" id="form-data" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group has-feedback">
+                {{ form.user_name }}
+            </div>
+            <div class="form-group has-feedback">
+                {{ form.password }}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ form.submit }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

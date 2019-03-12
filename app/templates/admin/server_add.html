@@ -1,0 +1,94 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>官网后台管理系统</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 服务器管理</a></li>
+            <li class="active">添加服务器</li>
+        </ol>
+    </section>
+    <section class="content" id="showcontent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">添加服务器</h3>
+                        </div>
+                        <form role="form" method="post" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <div class="box-body">
+                                {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                        {{ msg }}
+                                    </div>
+                                {% endfor %}
+                                {% for msg in get_flashed_messages(category_filter=['error']) %}
+                                <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-ban"></i>操作失败</h4>
+                                        {{ msg }}
+                                </div>
+                                {% endfor %}
+                                <div class="form-group">
+                                    <label for="input_name">{{ form.title.label }}</label>
+                                    {{ form.title }}
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ form.cpu.label }}</label>
+                                    {{ form.cpu }}
+                                </div>
+                                 <div class="form-group">
+                                    <label>{{ form.memory.label }}</label>
+                                    {{ form.memory }}
+                                </div>
+                                 <div class="form-group">
+                                    <label>{{ form.disk.label }}</label>
+                                    {{ form.disk }}
+                                </div>
+                                 <div class="form-group">
+                                    <label>{{ form.bdwidth.label }}</label>
+                                    {{ form.bdwidth }}
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ form.price.label }}</label>
+                                   {{ form.price }}
+                                </div>
+                                 <div class="form-group">
+                                    <label>{{ form.server_type.label }}</label>
+                                   {{ form.server_type }}
+                                </div>
+                                 <div class="form-group">
+                                    <label>{{ form.server_region.label }}</label>
+                                   {{ form.server_region }}
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                {{ form.submit }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='article_content') }}
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+
+        $('#g-3').addClass('active')
+        console.log($('#g-1'))
+        $('#g-3-1').addClass('active')
+        // 获取上传文件信息
+        $("#input_logo").change(function () {
+            console.log(11)
+            readFile(this, 'image')
+        })
+    });
+
+</script>
+{% endblock %}

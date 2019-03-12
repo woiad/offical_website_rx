@@ -1,0 +1,50 @@
+body, html{
+    width: 100%;height: 100%;background: #eee;
+}
+.form-singin{
+    width: 30%;padding: 20px;margin: 100px auto 0;box-shadow: 0 2px 7px rgba(0,0,0,.15);border-radius: 5px;
+    background: #fff;
+}
+.form-singin h1{
+    margin-top: 0;font-size: 20px;font-weight: normal;
+}
+.form-singin input.form-control{
+    width: 100%;margin: 20px 0;padding: 0 8px;height: 30px;line-height: 30px;box-sizing: border-box;
+}
+.checkbox input[type=checkbox]{
+    margin-left: 0;
+}
+.content .row{
+    margin: 0;
+}
+.content .user-wrapper{
+    padding: 35px 15px;background: #fff;box-shadow: 0 2px 7px rgba(0,0,0,.15)
+}
+
+.content .top{
+    display: flex;display: -webkit-flex;display: -moz-flex;display: -ms-flex;
+    justify-content: space-around;align-items: center;
+}
+.content .top .avatar{
+    width: 100px;height: 100px;border-radius: 50%;
+}
+.content .top .avatar img{
+    max-width: 100%;border-radius: 50%;
+}
+.content .text{
+    margin-top: 30px;padding-top: 15px;border-top: 1px solid #dedede;
+}
+
+.form-group img{
+    display: block;width: 226px;height: 116px;margin-top: 15px;background: rgb(237, 237, 237);border: none;
+}
+td img.cover_img{
+    width: 50px;
+    height: 50px;
+}
+.table tr td:first-child{
+    max-width: 200px;
+}
+.table tr td:nth-child(2){
+    max-width: 500px;
+}

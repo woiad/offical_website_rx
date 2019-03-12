@@ -1,0 +1,80 @@
+{% macro page(data, url, title=None, path = None, circuit=None) -%}
+{% if data %}
+<div class="page wow fadeInUp animated" style="margin-top: 30px; visibility: visible; animation-name: fadeInUp;">
+    <dl class="page_pagination center">
+        {% if circuit %}
+        <dd><a href="{{ url_for(url, page=1, title_name=title, path_name=path, circuit=circuit) }}" class="tran3s">首页</a></dd>
+        {% elif title and path %}
+        <dd><a href="{{ url_for(url, page=1, title_name=title, path_name=path) }}" class="tran3s">首页</a></dd>
+        {% else %}
+        <dd><a href="{{ url_for(url, page=1) }}" class="tran3s">首页</a></dd>
+        {% endif %}
+        {% if data.has_prev %}
+            {% if circuit %}
+            <dd><a href="{{ url_for(url, page=data.prev_num, title_name=title, path_name=path, circuit=circuit) }}" class="tran3s">
+                <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            </dd>
+            {% elif title and path %}
+            <dd><a href="{{ url_for(url, page=data.prev_num, title_name=title, path_name=path) }}" class="tran3s">
+                <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            </dd>
+            {% else %}
+            <dd><a href="{{ url_for(url, page=data.prev_num) }}" class="tran3s">
+                <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+            </dd>
+            {% endif %}
+        {% else %}
+        <dd class="disabled">
+            <a href="javascript:;">
+            <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </dd>
+        {% endif %}
+
+        {% for v in data.iter_pages() %}
+        {% if v == data.page %}
+        <dd><a href="#" class="active tran3s">{{ v }}</a></dd>
+        {% elif v == None %}
+        <dd><a href="#" class="tran3s">...</a></dd>
+        {% else %}
+            {% if circuit %}
+            <dd><a href="{{ url_for(url, page=v, title_name=title, path_name=path, circuit=circuit) }}" class="tran3s">{{ v }}</a></dd>
+            {% elif title and path %}
+            <dd><a href="{{ url_for(url, page=v, title_name=title, path_name=path) }}" class="tran3s">{{ v }}</a></dd>
+            {% else %}
+            <dd><a href="{{ url_for(url, page=v) }}" class="tran3s">{{ v }}</a></dd>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+
+        {% if data.has_next %}
+            {% if circuit %}
+             <dd><a href="{{ url_for(url, page=data.next_num, title_name=title, path_name=path, circuit=circuit) }}" class="tran3s">
+                <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </dd>
+            {% elif title and path %}
+            <dd><a href="{{ url_for(url, page=data.next_num, title_name=title, path_name=path) }}" class="tran3s">
+                <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </dd>
+            {% else %}
+             <dd><a href="{{ url_for(url, page=data.next_num) }}" class="tran3s">
+                <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </dd>
+            {% endif %}
+        {% else %}
+         <dd class="disabled">
+            <a href="javascript:;" class="tran3s">
+            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </dd>
+        {% endif %}
+
+         {% if circuit %}
+        <dd><a href="{{ url_for(url, page=data.pages, title_name=title, path_name=path, circuit=circuit) }}" class="tran3s">尾页</a></dd>
+        {% elif title and path %}
+        <dd><a href="{{ url_for(url, page=data.pages, title_name=title, path_name=path) }}" class="tran3s">尾页</a></dd>
+        {% else %}
+        <dd><a href="{{ url_for(url, page=data.pages) }}" class="tran3s">尾页</a></dd>
+        {% endif %}
+    </dl>
+</div>
+{% endif %}
+{%- endmacro %}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+
+	<!-- mobile responsive meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo/logo.ico') }}" type="image/x-icon" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+
+
+<div class="boxed_wrapper">
+<!--Start rev slider wrapper-->
+<section class="theme_menu stricky">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="main-logo">
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo/logo.png') }}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-9 menu-column">
+                <nav class="menuzord" id="main_menu">
+                    <ul class="menuzord-menu">
+                        <li ><a href="{{ url_for('index') }}">首页</a></li>
+                        <li id="product">
+                            <a href="javascript:;">锐讯产品<i class="fa fa-angle-right"></i></a>
+                            <div class="dropdown-container animated fadeIn" id="dropdown">
+                                <div data-show="server-rent" class="dropdown-item">
+                                    <a href="javascript:;" class="title">服务器租用
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="server-rent" id="server-rent">
+                                        <ul>
+                                            <li><a href="{{ url_for('server_List', title_name='普通服务器', path_name='服务器租用') }}">普通服务器租用</a></li>
+                                            <li><a href="{{ url_for('server_List', title_name='高防服务器', path_name='服务器租用') }}">高防服务器租用</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div data-show="server-col" class="dropdown-item">
+                                    <a href="javascript:;" class="title">服务器托管
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="server-col" id="server-col">
+                                        <ul>
+                                            <li><a href="{{ url_for('product_List', title_name='BGP机房托管', path_name='服务器托管', circuit='BGP') }}">BGP机房托管</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='电信机房托管', path_name='服务器托管', circuit='电信') }}">电信机房托管</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='双线机房托管', path_name='服务器托管', circuit='双线') }}">双线机房托管</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='国际机房托管', path_name='服务器托管', circuit='国际路线') }}">国际机房托管</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='三线机房托管', path_name='服务器托管', circuit='三线') }}">三线机房托管</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div data-show="cabient-rent" class="dropdown-item">
+                                    <a href="javascript:;" class="title">机柜租用
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="cabient-rent" id="cabient-rent">
+                                        <ul>
+                                            <li><a href="{{ url_for('product_List', title_name='电信机柜租用', path_name='机柜租用', circuit='电信') }}">电信机柜租用</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='双线机柜租用', path_name='机柜租用', circuit='双线') }}">双线机柜租用</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='国际机柜租用', path_name='机柜租用', circuit='国际路线') }}">国际机柜租用</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='BGP机柜租用', path_name='机柜租用', circuit='BGP') }}">BGP机柜租用</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='三线机柜租用', path_name='机柜租用', circuit='三线') }}">三线机柜租用</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="{{ url_for('service_add') }}">增值服务</a></li>
+                        <li><a href="{{ url_for('vistor_room') }}">参观锐讯机房</a></li>
+                        <li><a href="{{ url_for('discount') }}">优惠促销</a></li>
+                        <li><a href="{{ url_for('help') }}">帮助中心</a></li>
+                        <li><a href="{{ url_for('contact_us') }}">联系我们</a></li>
+                    </ul><!-- End of .menuzord-menu -->
+                </nav> <!-- End of #main_menu -->
+            </div>
+            <div class="right-column">
+                <div class="right-area">
+                    <div class="nav_side_content">
+                        <div class="search_option">
+                            <button class="search tran3s dropdown-toggle color1_bg" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            <form action="{{ url_for('search_result') }}" class="dropdown-menu" aria-labelledby="searchDropdown" method="post">
+                                <input type="text" placeholder="Search..." id="searct_text" name="search_str">
+                                <button class="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% block content%}
+{% endblock %}
+
+<footer class="main-footer">
+
+        <!--Widgets Section-->
+        <div class="widgets-section">
+            <div class="container">
+                <div class="row">
+                    <!--Big Column-->
+                    <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+
+                            <!--Footer Column-->
+                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                <div class="footer-widget about-widget">
+                                    <div class="section-title">
+                                        <h3>关于我们</h3>
+                                    </div>
+                                    <figure class="footer-logo">
+                                        <img class="public-code animated fadeIn" src="{{ url_for('static', filename='images/logo/f_ablogo.png') }}" alt="">
+                                        <img class="wechat-code animated fadeIn" src="{{ url_for('static', filename='images/logo/5b222bda60fe4.jpg') }}">
+                                    </figure>
+
+                                </div>
+                            </div>
+                            <!--Footer Column-->
+                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                <div class="footer-widget links-widget">
+                                    <div class="section-title">
+                                        <h3>锐讯产品</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list">
+                                            <li><a href="{{ url_for('server_List', title_name='普通服务器', path_name='服务器租用') }}">服务器租用</a></li>
+                                            <li><a href="{{ url_for('server_List', title_name='高防服务器', path_name='服务器租用') }}">高防服务器租用</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='BGP机房托管', path_name='服务器托管', circuit='BGP') }}">服务器托管</a></li>
+                                            <li><a href="{{ url_for('product_List', title_name='BGP机柜租用', path_name='机柜租用', circuit='BGP') }}">机柜租用</a></li>
+                                            <li><a href="{{ url_for('service_add') }}">增值服务</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Big Column-->
+                    <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+
+                            <!--Footer Column-->
+                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                <div class="footer-widget links-widget">
+                                    <div class="section-title">
+                                        <h3>帮助中心</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list">
+                                            <li><a href="{{ url_for('help') }}">购买流程</a></li>
+                                            <li><a href="{{ url_for('help') }}">常见问题</a></li>
+                                            <li><a href="{{ url_for('help') }}">网站备案</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--Footer Column-->
+                            <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                                <div class="footer-widget contact-widget">
+                                    <div class="section-title">
+                                        <h3>联系我们</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="contact-info">
+                                            <li><span class="icon fa fa-phone"></span>+86 0769-22502222(总机)</li>
+                                            <li><span class="icon fa fa-fax"></span>+86 0769-22101333</li>
+                                            <li><span class="icon fa fa-map-marker"></span>广东省东莞市南城区宏图路高盛科技园103号</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--Footer Bottom-->
+        <section class="footer-bottom">
+            <div class="container">
+                <div class="copy-text">
+                    <p>Copyright &copy; 2016 广东锐讯网络有限公司版权所有</p>
+
+                </div><!-- /.pull-right -->
+                <div class="get-text">
+                    <ul>
+                        <li><p>ISP许可证：粤B2-20051022</p></li>
+                        <li><p>备案号：粤ICP备11068626号-2</p></li>
+                        <li><p><i></i> 粤公网安备 44190002000172号</p></li>
+                    </ul>
+                </div><!-- /.pull-left -->
+            </div><!-- /.container -->
+        </section>
+
+    </footer>
+<!-- Scroll Top Button -->
+<div class="flat-window">
+        <ul>
+            <li>
+                <button class="scroll-top tran3s color2_bg">
+                    <span class="fa fa-angle-up"></span>
+                </button>
+            </li>
+            <li>
+                <button class=" color2_bg" href="tel:0769-22502222">
+                    <span class="fa fa-phone"></span>
+                    <div class="tel">
+                        <a>0769-22502222</a>
+                    </div>
+                </button>
+            </li>
+            <li>
+                <button class="color2_bg">
+                    <span class="fa fa-qrcode"></span>
+                    <div class="code animated fadeIn">
+                        <img src="{{ url_for('static', filename='images/logo/5b222bda60fe4.jpg') }}">
+                    </div>
+                </button>
+            </li>
+            <li>
+                <a href="{{ url_for('pay_way') }}">
+                    <button class="color2_bg">
+                        <span class="fa fa-jpy" style="color: #fff"></span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <button class="color2_bg">
+                    <span class="kf"></span>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <!--客服 弹窗-->
+<div class="kf-marsk animated fadeIn">
+        <div class="kf-container">
+            <div class="kf-title">
+                <h1>客服中心<span>CUSTOMER SERVICE CENTER</span></h1>
+            </div>
+            <div class="kf-list">
+                <h2>售前在线咨询
+                    <span>（以下为10位资深销售主管官方企业Q,更多销售员Q请咨询销售主管</span>
+                </h2>
+                <ul>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269143&site=qq&menu=yes">
+                            <i></i>销售-谢文婷(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269150&site=qq&menu=yes">
+                            <i></i>销售-邓建锋(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269177&site=qq&menu=yes">
+                            <i></i>销售-何杰(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269162&site=qq&menu=yes">
+                            <i></i>销售-李明辉(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269141&site=qq&menu=yes">
+                            <i></i>销售-康文宁(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269207&site=qq&menu=yes">
+                            <i></i>销售-吴盛积(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880908994&site=qq&menu=yes">
+                            <i></i>销售-吴伟在(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880657377&site=qq&menu=yes">
+                            <i></i>销售-潘劲松(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269168&site=qq&menu=yes">
+                            <i></i>销售-吴祖清(主管)
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin=2880269159&site=qq&menu=yes">
+                            <i></i>销售-刘强(主管)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="after-sales-service">
+                <h2>售后服务<span>（或与官方提供的专属QQ一对一直接服务）</span></h2>
+                <ul>
+                    <li>
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=800083103&site=qq&menu=yes">
+                            <i></i>800售后服务通道
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2880269138&site=qq&menu=yes">
+                            <i></i>投诉专员
+                        </a>
+                    </li>
+                    <li>
+                        <a><i></i>投诉留言系统</a>
+                    </li>
+                </ul>
+                <p>工作时间： 周一至周五 9：30至17：30 周六13：30至17：30，其它日期按国家法定节假日休假，如果有不便之请敬请谅解！ 售后技术支持：多部门7*24小时机制。</p>
+            </div>
+            <div class="close">
+                <a></a>
+            </div>
+        </div>
+    </div>
+	<!-- pre loader  -->
+<div class="preloader"></div>
+
+
+	<!-- jQuery js -->
+	<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+	<!-- bootstrap js -->
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<!-- jQuery ui js -->
+	<script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+	<!-- owl carousel js -->
+	<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+	<!-- mixit up -->
+	<script src="{{ url_for('static', filename='js/wow.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/menuzord.js') }}"></script>
+
+	<!-- fancy box -->
+	<script src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+    <!-- my js-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dropdown.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

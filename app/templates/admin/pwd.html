@@ -1,0 +1,62 @@
+{% extends 'admin/layout.html' %}
+        <!--内容-->
+{% block content %}
+    <section class="content-header">
+        <h1>官网后台管理系统</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 个人资料</a></li>
+            <li class="active">修改密码</li>
+        </ol>
+    </section>
+    <section class="content" id="showcontent">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">修改密码</h3>
+                    </div>
+                    <form role="form" action="" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="box-body">
+                        {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                {{ msg }}
+                            </div>
+                        {% endfor %}
+                        {% for msg in get_flashed_messages(category_filter=['error']) %}
+                            <div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-ban"></i>操作失败</h4>
+                                {{ msg }}
+                            </div>
+                        {% endfor %}
+                            <div class="form-group">
+                                <label>{{ form.old_pwd.label }}</label>
+                                {{ form.old_pwd }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.new_pwd.label }}</label>
+                                {{ form.new_pwd }}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.confirm_pwd.label }}</label>
+                                {{ form.confirm_pwd }}
+
+                            </div>
+                            {% for err in form.confirm_pwd.errors %}
+                            <div class="col-md-12">
+                                <font style="color:red">{{ err }}</font>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="box-footer">
+                            {{ form.submit }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

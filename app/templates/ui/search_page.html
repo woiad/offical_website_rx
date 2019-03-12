@@ -1,0 +1,40 @@
+{% macro page(data, url, current_page, str, total_page) -%}
+{% if data %}
+<div class="page wow fadeInUp animated" style="margin-top: 30px; visibility: visible; animation-name: fadeInUp;">
+    <dl class="page_pagination center">
+        <dd><a href="{{ url_for(url, page=1, str = str) }}" class="tran3s">首页</a></dd>
+        {% if current_page - 1 >= 1 %}
+        <dd><a href="{{ url_for(url, page=current_page - 1, str = str) }}" class="tran3s"><i class="fa fa-angle-left" aria-hidden="true"></i></a></a></dd>
+        {% else %}
+        <dd class="disabled">
+            <a href="javascript:;">
+            <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </dd>
+        {% endif %}
+        {% for page in data %}
+        {% if page == current_page %}
+        <dd><a href="{{ url_for(url, page=page, str = str) }}" class="tran3s active">{{ page }}</a></dd>
+        {% elif page != '...' %}
+        <dd><a href="{{ url_for(url, page=page, str = str) }}" class="tran3s">{{ page }}</a></dd>
+        {% else %}
+        <dd><a href="javascript:;" class="tran3s">{{ page }}</a></dd>
+        {% endif %}
+        {% endfor %}
+
+
+        {% if current_page + 1 <= total_page %}
+        <dd><a href="{{ url_for(url, page=current_page + 1, str = str) }}" class="tran3s">
+            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </dd>
+        {% else %}
+        <dd class="disabled">
+            <a href="javascript:;" class="tran3s">
+            <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        </dd>
+        {% endif %}
+        <dd><a href="{{ url_for(url, page=total_page, str = str) }}" class="tran3s">尾页</a></dd>
+
+    </dl>
+</div>
+{% endif %}
+{%- endmacro %}

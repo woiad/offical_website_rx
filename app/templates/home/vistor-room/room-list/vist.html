@@ -1,0 +1,106 @@
+{% extends 'home/layout.html' %}
+
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Vistor machine room</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="our-services style-2 vistor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/machine-room/jifang.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4><a href="{{ url_for('vistor_detail', roomName='fs') }}">佛山顺德电信机房</a></h4>
+                            <ul>
+                                <li>
+                                    <p>数据中心等级：<span style="color: #FB8117">★★★★</span></p>
+                                </li>
+                                <li>
+                                    <p>电力保障：<span>双路市电及UPS动力供应保障</span></p>
+                                </li>
+                                <li>
+                                    <p>出口带宽:<span>电信900Gbps 数据中心</span></p>
+                                </li>
+                                <li>
+                                    <p>测试IP：<span>请联系售前客服获取</span></p>
+                                </li>
+                                <li>
+                                    <p>咨询电话：<span>0769-22502222（总机）</span></p>
+                                </li>
+                                <li>
+                                    <p>服务支持：<span>7X24小时全年无休服务支持、真正的全天驻场工程师、实时详细的网络监控</span></p>
+                                </li>
+                                <li>
+                                    <p>联系地址：<span>中国广东省东莞市南城区宏图路高盛科技园103号</span></p>
+                                </li>
+                            </ul>
+                            <a href="{{ url_for('vistor_detail', roomName='fs') }}" class="thm-btn thm-btn-small" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="single-our-service">
+                        <figure class="img-box">
+                            <img src="{{ url_for('static', filename='images/machine-room/ar.jpg') }}"></a>
+                        </figure>
+                        <div class="text-box">
+                            <h4><a href="{{ url_for('vistor_detail', roomName='lm') }}">美国机房</a></h4>
+                            <ul>
+                                <li>
+                                    <p>数据中心等级：<span style="color: #FB8117">★★★★</span></p>
+                                </li>
+                                <li>
+                                    <p>电力保障：<span>双路市电+双套UPS+后备油机</span></p>
+                                </li>
+                                <li>
+                                    <p>出口带宽:<span>采取多线路接入</span></p>
+                                </li>
+                                <li>
+                                    <p>测试IP：<span>请联系售前客服获取</span></p>
+                                </li>
+                                <li>
+                                    <p>咨询电话：<span>0769-22502222（总机）</span></p>
+                                </li>
+                                <li>
+                                    <p>服务支持：<span>7X24小时全年无休服务支持、真正的全天驻场工程师、实时详细的网络监控</span></p>
+                                </li>
+                                <li>
+                                    <p>联系地址：<span>中国广东省东莞市南城区宏图路高盛科技园103号</span></p>
+                                </li>
+                            </ul>
+                            <a href="{{ url_for('vistor_detail', roomName='lm') }}" class="thm-btn thm-btn-small" style="margin-top: 2%">了解详情 ></a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

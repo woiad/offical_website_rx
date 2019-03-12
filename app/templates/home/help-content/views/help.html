@@ -1,0 +1,110 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/home_page.html' as pg %}
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Help Center</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="buy-flow sec-padd-top bg-f7">
+        <div class="container">
+            <div class="section-title">
+                <h3>购买流程</h3>
+            </div>
+            <ul>
+                <li>
+                    <img src="{{ url_for('static', filename='images/help/gmlc1.png') }}">
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/help/gmlc2.png') }}">
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/help/gmlc3.png') }}">
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/help/gmlc4.png') }}">
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="sec-padd-top faq bg-f7">
+        <div class="container">
+            <div class="section-title">
+                <h3>常见问题</h3>
+            </div>
+            <div class="faq-list">
+                <ul>
+                    {% for faq in faq_list.items %}
+                    <li class="wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="img-box">
+                            <img src="{{ url_for('static', filename='uploads/' + faq.cover_img) }}">
+                        </div>
+                        <div class="text">
+                            <h1><a href="{{ url_for('article_detail', id=faq.id) }}">{{ faq.title }}</a></h1>
+                            <p>{{ faq.info }}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {{ pg.page(faq_list, 'help') }}
+            </div>
+        </div>
+    </section>
+    <section class=" site-ba sec-padd bg-f7">
+        <div class="container">
+            <div class="section-title">
+                <h3>网站备案</h3>
+            </div>
+            <div class="row">
+                <div class="ba-item col-md-4 col-sm-4 col-xs-12">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/help/s_5832bcd7cf2f6.jpg') }}">
+                    </div>
+                    <div class="text">
+                        <h1><a href="{{ url_for('beian', name='care') }}">新手经验:网站备案流程和注意事项</a></h1>
+                        <p>新手经验:网站备案流程和注意事项　　当前，随着国家工信部对互联网行业管理力度的提升和规范化，在网站制作公司跟客户把网站做完成以后，政策规定网站需要通过备案才能正常访问。今天我们就聊聊网站备案的流程和体...</p>
+                    </div>
+                </div>
+                <div class="ba-item col-md-4 col-sm-4 col-xs-12">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/help/s_5832bcd7cf2f6.jpg') }}">
+                    </div>
+                    <div class="text">
+                        <h1><a href="{{ url_for('beian', name='flow') }}">网站备案流程</a></h1>
+                        <p>网站备案流程国家信息产业部最新网站备案系统已经成功上线运行，网站备案审核将越来越严格，以下是东莞市锐讯网络技术有限公司最新网站备案流程，请网站的主办者务必关注。 新增备案、新增网站备案、接入备案、备案...</p>
+                    </div>
+                </div>
+                <div class="ba-item col-md-4 col-sm-4 col-xs-12">
+                    <div class="img-box">
+                        <img src="{{ url_for('static', filename='images/help/s_5832bcd7cf2f6.jpg') }}">
+                    </div>
+                    <div class="text">
+                        <h1><a href="{{ url_for('beian', name='need') }}">网站备案须知</a></h1>
+                        <p>单位或个人网站备案须知一、互联网备案法律依据 1、《中华人民共和国计算机信息系统安全保护条例》第十一条规定：“进行国际联网的计算机信息系统由计算机信息系统使用单位报省级以上人民政府公安机关备案”...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

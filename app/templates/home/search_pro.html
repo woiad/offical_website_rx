@@ -1,0 +1,93 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/search_page.html' as pg %}
+
+{% block content %}
+<section class="search sec-padd">
+    <div class="container">
+        <div class="inp_sear">
+        <form action="{{ url_for('search_pro') }}" class="search-form" method="post">
+            <input type="text" placeholder="Search..." id="searct_text" name="search_str">
+            <button class="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+    </div>
+    </div>
+</section>
+<section class="search-result">
+    <div class="container">
+        <div class="search-content">
+            <div class="section-title center">
+              <h2>搜索结果</h2>
+            </div>
+            <div class="tab-hd">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('search_result', str=str) }}">文章<span>（{{ art_total }}）</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:;">产品<span>（{{ pro_total }}）</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="product-list animated fadeIn">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="blog-section">
+                                <div class="row">
+                                    {% for product in show_product %}
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class=" wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                            <div class="item">
+                                                <div class="hot-product">
+                                                <h1>{{ product.title }}</h1>
+                                                <div class="price">
+                                                    <h2>￥<span>{{ product.price.split(' ')[0] | extract_num }} </span>{{ product.price.split(' ')[0] | extract_unit }}</h2>
+                                                    <div class="more-price">
+                                                        <dl>
+                                                            {% for price in product.price.split(' ') %}
+                                                            <dd>
+                                                                <h2>￥<span>{{ price | extract_num }} </span>{{ price | extract_unit }}</h2>
+                                                            </dd>
+                                                            {% endfor %}
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <ul class="product-detail">
+                                                    {% if product.cpu %}
+                                                    <li><p>CPU： {{ product.cpu }}</p></li>
+                                                    {% endif %}
+                                                    {% if product.memory %}
+                                                    <li><p>内存： {{ product.memory }}</p></li>
+                                                    {% endif %}
+                                                    {% if product.disk %}
+                                                    <li><p>硬盘： {{ product.disk }}</p></li>
+                                                    {% endif %}
+                                                    {% if product.ip_num %}
+                                                    <li><p>IP个数： {{ product.ip_num }}</p></li>
+                                                    {% endif %}
+                                                    {% if product.defends %}
+                                                    <li><p>防御： {{ product.defends }}</p></li>
+                                                    {% endif %}
+                                                    {% if product.standard %}
+                                                    <li><p>规格： {{ product.standard }}</p></li>
+                                                    {% endif %}
+                                                    <li><p>带宽： {{ product.bdwidth }}</p></li>
+                                                </ul>
+                                                <a class="buy">立即开通</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {{ pg.page(pages, 'search_pro', current_page, str, all_page) }}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

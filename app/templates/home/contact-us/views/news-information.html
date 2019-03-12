@@ -1,0 +1,63 @@
+{% extends 'home/layout.html' %}
+
+
+{% import 'ui/home_page.html' as pg %}
+
+{% import 'ui/nav.html' as nav %}
+
+{% block content %}
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li>
+                        新闻资讯
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+                {{ nav.active('news', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 mg-40">
+                    <div class="news-navbar clear_fix">
+                        <ul>
+                            <li class="active"><a href="{{ url_for('new_information') }}">锐讯动态</a></li>
+                            <li><a href="{{  url_for('new_information_adv') }}">最新公告</a></li>
+                            <li><a href="{{  url_for('new_information_list') }}">新闻资讯</a></li>
+                        </ul>
+                    </div>
+                    <div class="news-list">
+                        <ul>
+                            {% for new in news.items %}
+                            <li>
+                                <a href="{{ url_for('article_detail', id=new.id) }}">{{ new.title }}</a>
+                                <span>{{ new.release_time }} 　 </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{ pg.page(news, 'new_information') }}
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>官网后台管理系统</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 优惠促销</a></li>
+            <li class="active">添加优惠</li>
+        </ol>
+    </section>
+    <section class="content" id="showcontent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">添加优惠</h3>
+                        </div>
+                        <form role="form" method="post" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <div class="box-body">
+                                {% for msg in get_flashed_messages(category_filter=['ok']) %}
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-check"></i> 操作成功</h4>
+                                        {{ msg }}
+                                    </div>
+                                {% endfor %}
+                                {% for msg in get_flashed_messages(category_filter=['error']) %}
+                                <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <h4><i class="icon fa fa-ban"></i>操作失败</h4>
+                                        {{ msg }}
+                                </div>
+                                {% endfor %}
+                                <div class="form-group">
+                                    <label for="input_name">{{ form.title.label }}</label>
+                                    {{ form.title }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_info">{{ form.info.label }}</label>
+                                    {{ form.info }}
+                                </div>
+                                 <div class="form-group">
+                                    <label for="input_logo">{{ form.img.label }}</label>
+                                    {{ form.img }}
+                                    <img  class="img-responsive" alt="" id="logo">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="input_stime">{{ form.start_time.label }}</label>
+                                    {{ form.start_time }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_etime">{{ form.end_time.label }}</label>
+                                   {{ form.end_time }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_etime">{{ form.active.label }}</label>
+                                   {{ form.active }}
+                                </div>
+                                 <div class="form-group">
+                                    <label for="input_discount">{{ form.article_content.label }}</label>
+                                   {{ form.article_content }}
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                {{ form.submit }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='article_content') }}
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+
+        $('#g-3').addClass('active')
+        console.log($('#g-1'))
+        $('#g-3-1').addClass('active')
+        // 获取上传文件信息
+        $("#input_logo").change(function () {
+            console.log(11)
+            readFile(this, 'image')
+        })
+        function readFile(_this, type) {
+            var file = _this.files[0]
+            console.log(file)
+            var myForm = new FormData()
+            myForm.append(type, file)
+            var reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = function (e) {
+                src = e.target.result
+                if (type !== 'image') {
+                  sourceDemo = $("<source src=\""+ src +"\">");
+                  $('#video').attr('src', src)
+                  $('#video').css({'display': 'block'})
+                } else {
+                  $('#logo').attr('src', src)
+                }
+            }
+        }
+    });
+
+</script>
+{% endblock %}

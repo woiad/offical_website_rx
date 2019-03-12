@@ -1,0 +1,87 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/home_page.html' as pg %}
+
+{% block content %}
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Product List</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('index') }}">{{ path }}</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <div class="product-detail-list sec-padd-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <section class="blog-section">
+                        <div class="row">
+                            {% if servers.items %}
+                            {% for server in servers.items %}
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class=" wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                    <div class="item">
+                                        <div class="hot-product">
+                                            <h1>{{ server.title }}</h1>
+                                            <div class="price">
+                                                <h2>￥<span>{{ server.price.split(' ')[0] | extract_num }} </span>{{ server.price.split(' ')[0] | extract_unit }}</h2>
+                                                <div class="more-price">
+                                                    <dl>
+                                                        {% if server.price %}
+                                                        {% for price in server.price.split(' ') %}
+                                                        {% if loop.index0 > 0 %}
+                                                        <dd>￥<span>{{ price | extract_num }}</span>{{ price | extract_unit }}</dd>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                        {% endif %}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <ul class="product-detail">
+                                                <li><p>CPU： {{ server.cpu }}</p></li>
+                                                <li><p>内存： {{ server.memory }}</p></li>
+                                                <li><p>硬盘： {{ server.disk }}</p></li>
+                                                <li><p>带宽： {{ server.bdwidth }}</p></li>
+                                                <li><p>节点： {{ server.server_region }}</p></li>
+                                            </ul>
+                                            <a class="buy">立即开通</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div>
+                                <p style="text-align: center;font-size: 20px;padding-bottom: 20px">暂无数据</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="border-bottom"></div>
+                        {% if servers.items %}
+                        {{ pg.page(servers, 'server_List', title, path) }}
+                        {% endif %}
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'home/layout.html' %}
+
+{% import 'ui/nav.html' as nav %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/photoswipe.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/default-skin.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="inner-banner has-base-color-overlay text-center">
+        <div class="container">
+            <div class="box">
+                <h3>Contact Us</h3>
+            </div><!-- /.box -->
+        </div><!-- /.container -->
+    </div>
+    <div class="breadcumb-wrapper">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="list-inline link-list">
+                    <li>
+                        <a href="{{ url_for('index') }}">首页</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('contact_us') }}">联系我们</a>
+                    </li>
+                    <li>
+                        {{ title }}
+                    </li>
+                </ul><!-- /.list-line -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.container -->
+    </div>
+
+    <section class="sec-padd">
+        <div class="container">
+            <div class="row">
+                {{ nav.active('int', nav_data) }}
+                <div class="col-md-8 col-sm-8 col-xs-12 intd-company mg-40">
+                    <h1>广东锐讯网络有限公司</h1>
+                    <p>锐讯网络，全称：广东锐讯网络有限公司，isp证号：粤B1.B2-20160191，初创于2004年。锐讯从事的行业是通讯行业中的互联网接入服务，为国内各大信息服务提供商、网络文化传播、媒体、传统行业信息化等类型的企业提供服务。</p>
+                    <p>锐讯始终致力于为客户提供优质的网络环境、接入带宽及高稳定性的网络服务，为此，我们已建立了多点7*24
+                        小时的服务机构，其中包括：7*24小时的客户服务中心，7*24小时的网管中心，7*24小时的安全中心以
+                        及大多数IDC机房的7*24小时现场驻点工程师。锐讯的售后服务团队占公司人数的30%，技术团队占40%，
+                        其余的分别为销售团队及其他后勤服务人员，我们目前在售后服务上已经取得一定的成绩，
+                        但我们仍然在不断的努力改进，追求极致。我们推出的每一项服务，都本着客户至上的原则，
+                        我们每一个前进的脚步，都充分体现了对客户的尊重与关怀。 面对未来，我们承诺在保持现有优势的
+                        基础上，为客户提供更全面、更优质的互联网接入服务。
+                    </p>
+                    <p>
+                        锐讯倡导“诚信”的企业经营理念，无论对客户、对员工、还是对第三方合作方，我们都始终秉承诚信的合作态度。
+                        锐讯网络的服务目标是“诚心、诚信”的贴心优质服务。我们坚持以人为本，鼓励员工充分发挥他们的才智和潜能，
+                        并尽一切力量为员工提供施展才能的机会，使他们与锐讯共同成长。确实，我们仍在成长，我们尚且年轻，
+                        我们需要您多方面的关注与支持。锐讯，意在“尖端通讯”，我们希望锐讯是勇往直前的，锐讯提供的通讯服务，
+                        能够长久屹立在行业的尖端。
+                    </p>
+                    <h2>
+                        相信锐讯，有您，有锐讯。
+                    </h2>
+                    <hr />
+                    <h1>公司领导致辞</h1>
+                    <p>在日新月异的市场变化中，广东锐讯网络有限公司秉承着一贯踏实进取的作事风格，致力于在公司主体业务上做深、
+                        做透、做强、做大，为社会创造丰富多彩的网络生活，为智慧中国、数字中国、平安中国竭诚服务，
+                        逐步成为一个受人尊敬、有价值的公司。这不仅是我们的使命和未来愿景，更是我们每一个锐讯士人为之
+                        努力的强大动源。
+                    </p>
+                    <p>
+                        广东锐讯网络有限公司是一个崇尚科技，尊重人才的公司，公司认为我们最大的核心竞争力就是我们每一位
+                        不断创新与奋斗的锐讯士人，我们更愿意为这些公司为之骄傲的同事们，努力营造轻松、和谐的氛围，
+                        通过积极完善独特、合理的管理模式，创造一个可以最大限度发挥的平台，让我们的同事可以“快乐工作，
+                        幸福生活”。
+                    </p>
+                    <p>
+                        作为一个具有社会责任感的公司，我们深感肩上的责任重大，无论是技术上的创新，新业务的拓展，
+                        还是人才的培养等都时时刻刻提醒着我们。如何在残酷的市场变化中立于不败之地，是我们管理者需
+                        要持续思考的课题。但是同时，我们也对此充满了信心，只要坚持我们的理念，实施科学的战略，
+                        付出更多的努力。在新的挑战和机遇面前广东锐讯网络有限公司必将会创造卓越，勇往直前！
+                    </p>
+                    <h2>广东锐讯网络有限公司</h2>
+                    <hr />
+                </div>
+            </div>
+            <div class="company-image mg-40">
+                <ul>
+                    <li>
+                        <img src="{{ url_for('static', filename='images/about-us/ab_tp1.jpg') }}">
+                    </li>
+                    <li>
+                        <img src="{{ url_for('static', filename='images/about-us/ab_tp2.jpg') }}">
+                    </li>
+                    <li>
+                        <img src="{{ url_for('static', filename='images/about-us/ab_tp3.jpg') }}">
+                    </li>
+                    <li>
+                        <img src="{{ url_for('static', filename='images/about-us/ab_tp4.jpg') }}">
+                    </li>
+                    <li>
+                        <img src="{{ url_for('static', filename='images/about-us/ab_tp5.jpg') }}">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 公司相册 -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- photo js-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/photoswipe.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/photoswipe-ui-default.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/init-photoSwipe.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'admin/layout.html' %}
+
+{% block content %}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-md-6">
+            <div class="user-wrapper">
+                <div class="top">
+                    <div class="avatar">
+                        <img src="{{  url_for('static', filename='images/img168.jpeg')}}">
+                    </div>
+                    <div class="user-name">
+                        <p>{{ session['account'] }}</p>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>登陆时间: {{ session['login_time'] }}</p>
+                    <p>登陆ip：{{ session['ip'] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
