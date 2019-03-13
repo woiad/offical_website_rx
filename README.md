@@ -166,4 +166,106 @@ ckeditor的配置 #相关的配置在config.py中，想知道配置的详细信�
 之前就是在这里研究了好久，各种谷歌百度都不管用，好几次都想一个编辑器，好在，最后找到了问题，就是name的问题，必须是表单类中定义的CKEditorField（）的实例，否则图片上传功能，无法实现！！！！！这是我自己踩的第一个大坑。。。
 这是关于flask-ckeditor 的链接： https://juejin.im/post/5b35c0e4f265da5974057044
 
-文章的问题解决了，接下来该解决的是图片的问题。大多数的文章都带有图片的，那么图片该如何存储在数据库中呢？这个问题之前自己作为前端
+数据获取的页面写好了，文章的问题也解决了，接下来就该考虑的是，数据的存储问题了。数据肯定是要存到数据库里面的，这里使用到的数据库是mysql,关系型数据库。之前有学过mysql的命令，所以对它也有一些了解,但是在python中如何使用python，则不知道了，没关系，有谷歌，又是各种资料查找后，才找到解决的办法。用flask_sqlalchemy,这是一个orm框架，所谓的orm（object-relationship-mapping）即是，对象关系映射。对mysql的一些操作，可以使用python的对象的操作来代其，之后，orm框架会把这些操作映射成mysql的操作，即我们只需要使用python的对象的操作，就可以操作数据库了，而不需要直接写数据库的命令，是不是很强大，而且很方便，特别是对我们这些，不懂后端的前端工程师来说，简直就是神器啊，又一神器。。。
+flask_sqlalchemy 官方文档：http://www.pythondoc.com/flask-sqlalchemy/quickstart.html
+使用方法：
+
+  app/init.py
+  
+    form flask_sqlalchemy import SQLALchemy
+    
+    app = Flask(app)
+    db = SQLALchemy(app)
+    
+  condig.py
+  
+  #用于连接数据的数据库
+  #SQLALCHEMY_DATABASE_URL = 'mysql+pyslql://user:password@ddress:port/database_name'
+  SQLALCHEMY_dATABASE_URL = 'mysql+pysql://root:123456@localhost:3306/website_data'
+  #如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。
+  SQLALCHEMY_TRACK_MODIFICATIONS = True
+  
+  #提示：如果使用mysql，则数据库必须存在，也就是要先创配置中的建数据库，其次，mysql.server 必须开启。
+  全局定义好了，接下来该写模型了，所谓的模型也就数数据库的字段，只不过，这些字段，我们使用python的类的属性来先定义创建。
+  
+  app/models.py
+  
+    from app import db
+    
+    class Article(db.Model):
+    
+    __tablename__ = 'article'
+    
+    id = db.Column(db.Integer, primary_key=True) #对应数据库的id字段
+    title = db.Column(db.String(64), index=True, unique=True)  #对应数据库的title字段
+    info = db.Column(db.String(256))  #对应数据库的info字段
+    release_time = db.Column(db.String(128), index=True)  #对应数据库的release_time字段
+    click_count = db.Column(db.String(64), index=True)  #对应数据库的click_count字段
+    article_content = db.Column(db.Text)  #对应数据库的article_content字段
+    article_type = db.Column(db.Integer, index=True)  #对应数据库的article_type字段
+    cover_img = db.Column(db.String(64), index=True)  #对应数据库的cover_imgd字段
+    
+  模型定义好了之后，需要使用的话，直接导入即可。
+  
+  接下来就是实现数据存进数据的实现了！
+  
+  app/admin/views.py
+  
+  form app.models import Article
+  from app import db
+  from .from import articleForm  #编辑文章的form表单
+  from flask import render_template , url_for
+  
+  @admin.route('/article_add')
+  def article_add():
+  form = articleForm()
+  if validate_on_submit  #点击提交时执行，且校验都通过
+      article = Article(title = form.data['title'], info = form.data['info'], release_time = form.data['release_time']
+                         click_count = form.data['click_count'], article_content = form.data['article_content']
+                         article_type = form.data['article_type'], cover_img  =form.data['cover_img']
+      )
+      db.session.add(article) #Article实例化后，添加到session,
+      db.session.commit() #提交session,只有提交了session,数据库才有内容，如果只是把实例添加到session,而没有提交，数据库没内容
+      return redirect(url_for('admin.article_add', form=form))
+  return render_template('admin/article_add.html', form=from)
+  
+#说明一下,form.data[name],获取form表单的内容,nama就是表单字段的实例，这只是简单的实例，提交时还有一些逻辑处理，例如title不能重复，上传的图片的存储，图片的名字的修改等。
+
+模型一旦创建之后，就无法修改，即一旦你定义好了类，后期想要在增加字段时，这时候，直接在类哪里增加，是没用的，数据库里面是无法增加的，这时候，就需要用到数据库迁移了，flask_migrate,可以更新数据库，保证数据库的表跟相对应的类的同步。
+
+安装 flask_migrate
+
+pip install flask_migrate
+
+初始化：
+
+app/init.py 
+
+  from flask import Flask
+  from flask_migrate import Migrate
+  
+  app = Flask(app)
+  migrate = Migrate(app)
+  
+创建项目的迁移存储库:
+
+  falsk db init
+
+完成之后，会发现根目录多一个目录 migrations,会面保存着每次迁移的数据库的表即标的结构。
+第一次迁移：
+  falsk db migrate -m'迁移说明'
+
+迁移完成之后：升级数据库。即同步类和数据库，修改数据库
+flask db upgrade
+
+数据库降级：把数据降回修改之前的状态
+falsk db downgrade
+
+#只有删除，增加，修改字段时，数据库迁移才能使用
+#如果想要修改字段的数据类型的大小时，数据迁移也能使用，需要修改migrations里面的env.py文件
+ context.configure(
+          …………
+          compare_type=True,  # 检查字段类型
+          )
+修改之后即可。
+
