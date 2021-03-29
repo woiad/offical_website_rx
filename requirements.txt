@@ -159,7 +159,7 @@ pyecharts-javascripthon==0.0.6
 pyecharts-jupyter-installer==0.0.3
 pyecharts-snapshot==0.1.10
 pyflakes==1.6.0
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.7.1
 pylint==1.7.4
 PyMySQL==0.9.3
