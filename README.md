@@ -30,17 +30,17 @@
 
 首先要做的，就是把页面的一些写法给改了，首先生成一个公用的模板，命名为`:layout.html`,该模板包含页面公用的头部，即导航栏，底部，`footer`.和一些其他公用的部分。
 
-  ```{% block content %}
-  {% endblock %}```
+  ```
+    {% block content %}
+    {% endblock %}
+ ```
   
 其他页面的内容，则放在这里面，加入其他页面有独立的 `css` 和 `js`，可以在页面的 `header` 里和 `</body>`之前分别加上
 
   ``` 
     {% block css %}
     {% endblock %}
-  ```
   
-  ```
     {% block js %}
     {% endblock %}
   ```
