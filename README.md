@@ -35,21 +35,25 @@
   
 其他页面的内容，则放在这里面，加入其他页面有独立的 `css` 和 `js`，可以在页面的 `header` 里和 `</body>`之前分别加上
 
-  ```{% block css %}
-  {% endblock %}```
+  ``` 
+    {% block css %}
+    {% endblock %}
+  ```
   
-  ```{% block js %}
-  {% endblock %}```
+  ```
+    {% block js %}
+    {% endblock %}
+  ```
   
-这里面的内容则是其他页面的独立的css和js。
+这里面的内容则是其他页面的独立的 `css`和 `js`。
 
-其他的页面直接用jinjia的继承来使用该模板。
+其他的页面直接用 `jinjia` 的继承来使用该模板。
 
-  {% extends 'home/layout.html' %}
+  ```{% extends 'home/layout.html' %}```
 
-提示:jinjia的所有模板和页面必须位于tempaltes目录下，渲染页面时，会直接在templates目录下寻找相关的页面。
+> 提示:jinjia 的所有模板和页面必须位于tempaltes目录下，渲染页面时，会直接在templates目录下寻找相关的页面。
 
-然后，页面的内容则包含在block content 里面
+然后，页面的内容则包含在 `block content` 里面
   {% block content %}
   页面的内容。。。
   {% endblock %}
