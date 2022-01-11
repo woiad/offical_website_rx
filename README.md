@@ -130,84 +130,122 @@ app/init.py
 先导入蓝图，然后在全局变量中注册蓝图，接着分别在 `admin/views.py` 和 `home/views.py` 中导入蓝图
 
   app/admin/views.py
-  form . import admin
+  ```
+     form . import admin
+  ```
   
   app/home/views.py
-  from .import home
+  ```
+     from .import home
+  ```
 
-然后修改home中的路由，把@app.route(path)修改成@home.route(path),admin里面的路由也变成了@admin.route(path)。之后每当调用路由之后的函数名，需要加上蓝图名前缀，例如：
+然后修改 `home` 中的路由，把 `@app.route(path)` 修改成 `@home.route(path)`, `admin` 里面的路由也变成了`@admin.route(path)`。之后每当调用路由之后的函数名，需要加上蓝图名前缀，例如：
 
 app/home/views
-  @home.route('/')
-  def index():
-  return render_template('home/index.html')
+  ```
+     @home.route('/')
+     def index():
+    return render_template('home/index.html')
+  ```
 
-首页的logo如要跳转至页面的首页
-  <a href="{{ url_for('home.index') }}"></a>
+首页的 `logo` 如要跳转至页面的首页
+  ```
+     <a href="{{ url_for('home.index') }}"></a>
+  ```
 即凡是需要调用路由后面的函数名进行跳转的都需要加上相关的蓝图前缀。
 
 
-蓝图定义好，现在一个应用包含了两个子项目，可以编写后台管理页面了。后台管理页面主要是用于处理数据的，因此，form表单少不了的，刚好flask也集成了form表单，wtf_form,可以使用这个form表单提前前端的form表单，该表单有许多的便利，可以很轻易的获取里面的数据，因此，使用falsk自带的form表单带来极大的便利。如需知道wtf_form的相关用法，请自行谷歌。
+蓝图定义好，现在一个应用包含了两个子项目，可以编写后台管理页面了。后台管理页面主要是用于处理数据的，因此，`form` 表单少不了的，刚好 `flask` 也集成了`form` 表单，`wtf_form`,可以使用这个 `form` 表单提交前端的 `form` 表单，该表单有许多的便利，可以很轻易的获取里面的数据，因此，使用 `falsk` 自带的 `form` 表单带来极大的便利。如需知道 `wtf_form` 的相关用法，请自行谷歌。
 
-表单处理好了之后，碰到的第一个难题是，文章如何实现，官网一般都会包含一些公司的介绍，新闻文章，公司新闻等等文章，而这些文章要如何实现呢？谷歌了之后，才知道可以使用富文本编辑器来保存文章格式。富文本编辑器，可是一个大神器，使用它编辑好文章之后，把该文章的内容发送给后台，它会包含文章的格式，即把文章转为html格式，我只要保存该html格式的文章在数据库，前端直接获取，然后渲染文章，那么这个文章的格式，就跟之前编辑的时候是一摸一样的。。。好强大！然后又找到了一个flask集成的富文本编辑器，CKEditor。
+表单处理好了之后，碰到的第一个难题是，文章如何实现，官网一般都会包含一些公司的介绍，新闻文章，公司新闻等等文章，而这些文章要如何实现呢？谷歌了之后，才知道可以使用富文本编辑器来保存文章格式。富文本编辑器，可是一个大神器，使用它编辑好文章之后，把该文章的内容发送给后台，它会包含文章的格式，即把文章转为 `html` 格式，我只要保存该 `html` 格式的文章在数据库，前端直接获取，然后渲染文章，那么这个文章的格式，就跟之前编辑的时候是一摸一样的。。。好强大！然后又找到了一个 `flask` 集成的富文本编辑器，CKEditor。
 
 先安装：
-pip install flask-ckeditor
+ ``` 
+    pip install flask-ckeditor
+ ```
 
 初始化扩展：
 app/init.py
 
-from flask_ckeditor import CKEditor
+ ```
+    from flask_ckeditor import CKEditor
 
-app = Flask(__name__)
-ckeditor = CKEditor(app)
+   app = Flask(__name__)
+   ckeditor = CKEditor(app)
+ ```
 
-在form.py中创建 CKEditor 文本区域
+在 `form.py` 中创建 `CKEditor` 文本区域
 
-from flask_ckeditor import CKEditorField
+ ```
+    from flask_ckeditor import CKEditorField
 
-class articleForm(FlaskForm):
+   class articleForm(FlaskForm):
     ....
     article_content = CKEditorField(label='文章内容', validators=[DataRequired('文章内容不能为空')],
                                     render_kw={'class': 'form-control', 'placeholder': '请输入文章内容'})
-                                    
-接着在需要使用 ckeditor 的地方,form是articleForm的实例，有渲染函数传递过来的。
-{{ form.article_content }}
+ ```                                    
 
-加载 ckeditor
 
-{{ ckeditor.load() }}
+接着在需要使用 `ckeditor` 的地方, `form` 是 `articleForm` 的实例，有渲染函数传递过来的。
 
-ckeditor的配置 #相关的配置在config.py中，想知道配置的详细信息，点击下面的链接
 
-{{ ckeditor.config(name='article_content') }} #这个name至关重要，填写的是在表单类中定义的属性名，否则会报错，导致图片上传功能无法实现！！
+```
+   {{ form.article_content }}
+```
 
-之前就是在这里研究了好久，各种谷歌百度都不管用，好几次都想一个编辑器，好在，最后找到了问题，就是name的问题，必须是表单类中定义的CKEditorField（）的实例，否则图片上传功能，无法实现！！！！！这是我自己踩的第一个大坑。。。
-这是
-之前就是在这里研究了好久，各种谷歌百度都不管用，好几次都想一个编辑器，好在，最后找到了问题，就是name的问题，必须是表单类中定义的CKEditorField（）的实例，否则图片上传功能，无法实现！！！！！这是我自己踩的第一个大坑。。。
-这是关于flask-ckeditor 的链接： https://juejin.im/post/5b35c0e4f265da5974057044
+加载 `ckeditor`
 
-数据获取的页面写好了，文章的问题也解决了，接下来就该考虑的是，数据的存储问题了。数据肯定是要存到数据库里面的，这里使用到的数据库是mysql,关系型数据库。之前有学过mysql的命令，所以对它也有一些了解,但是在python中如何使用python，则不知道了，没关系，有谷歌，又是各种资料查找后，才找到解决的办法。用flask_sqlalchemy,这是一个orm框架，所谓的orm（object-relationship-mapping）即是，对象关系映射。对mysql的一些操作，可以使用python的对象的操作来代其，之后，orm框架会把这些操作映射成mysql的操作，即我们只需要使用python的对象的操作，就可以操作数据库了，而不需要直接写数据库的命令，是不是很强大，而且很方便，特别是对我们这些，不懂后端的前端工程师来说，简直就是神器啊，又一神器。。。
-flask_sqlalchemy 官方文档：http://www.pythondoc.com/flask-sqlalchemy/quickstart.html
+
+```
+   {{ ckeditor.load() }}
+```   
+
+
+# ckeditor 的配置: 相关的配置在config.py中，想知道配置的详细信息，点击下面的链接
+
+ 这个 `name` 至关重要，填写的是在表单类中定义的属性名，否则会报错，导致图片上传功能无法实现！！
+
+
+ ```
+    {{ ckeditor.config(name='article_content') }}
+ ```
+
+
+之前就是在这里研究了好久，各种谷歌百度都不管用，好几次都想一个编辑器，好在，最后找到了问题，就是 `name` 的问题，必须是表单类中定义的 `CKEditorField（）`的实例，否则图片上传功能，无法实现！！！！！这是我自己踩的第一个大坑。。。
+这是关于 `flask-ckeditor` 的链接： https://juejin.im/post/5b35c0e4f265da5974057044
+
+数据获取的页面写好了，文章的问题也解决了，接下来就该考虑的是，数据的存储问题了。数据肯定是要存到数据库里面的，这里使用到的数据库是 `mysql`,关系型数据库。之前有学过 `mysql` 的命令，所以对它也有一些了解,但是在 `python` 中如何使用 `mysql`，则不知道了，没关系，有谷歌，又是各种资料查找后，才找到解决的办法。用 `flask_sqlalchemy`,这是一个`orm`框架，所谓的 `orm（object-relationship-mapping）` 即是，对象关系映射。对 `mysql` 的一些操作，可以使用 `python` 的对象的操作来代其，之后，`orm` 框架会把这些操作映射成 `mysql` 的操作，即我们只需要使用 `python` 的对象的操作，就可以操作数据库了，而不需要直接写数据库的命令，是不是很强大，而且很方便，特别是对我们这些，不懂后端的前端工程师来说，简直就是神器啊，又一神器。。。
+
+
+> flask_sqlalchemy 官方文档：http://www.pythondoc.com/flask-sqlalchemy/quickstart.html
+
+
 使用方法：
 
   app/init.py
   
-    form flask_sqlalchemy import SQLALchemy
+    ```
+      form flask_sqlalchemy import SQLALchemy
     
-    app = Flask(app)
-    db = SQLALchemy(app)
-    
+      app = Flask(app)
+      db = SQLALchemy(app)
+   ```
+   
+   
   condig.py
   
-  #用于连接数据的数据库
-  #SQLALCHEMY_DATABASE_URL = 'mysql+pyslql://user:password@ddress:port/database_name'
-  SQLALCHEMY_dATABASE_URL = 'mysql+pysql://root:123456@localhost:3306/website_data'
-  #如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。
-  SQLALCHEMY_TRACK_MODIFICATIONS = True
+  ```
+    #用于连接数据的数据库
+    SQLALCHEMY_DATABASE_URL = 'mysql+pyslql://user:password@ddress:port/database_name'
+    SQLALCHEMY_dATABASE_URL = 'mysql+pysql://root:123456@localhost:3306/website_data'
+    #如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它。
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+  ```
+    
+   > 提示：如果使用mysql，则数据库必须存在，也就是要先创配置中的建数据库，其次，mysql.server 必须开启。
   
-  #提示：如果使用mysql，则数据库必须存在，也就是要先创配置中的建数据库，其次，mysql.server 必须开启。
-  全局定义好了，接下来该写模型了，所谓的模型也就数数据库的字段，只不过，这些字段，我们使用python的类的属性来先定义创建。
+  
+  全局定义好了，接下来该写模型了，所谓的模型也就数数据库的字段，只不过，这些字段，我们使用 `python` 的类的属性来先定义创建。
   
   app/models.py
   
