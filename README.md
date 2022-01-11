@@ -1,13 +1,14 @@
 # offical_website_rx
 公司企业网 flask 实现 前端+后台
 
-#克隆后先运行requirements.txt 文件安装项目的环境和依赖
-pip install -r requirements.txt
+1. 克隆后先运行requirements.txt 文件安装项目的环境和依赖
+```pip install -r requirements.txt```
 
-#安装好依赖后，要确保mysql服务启动，如果为启动，会报错
-mysql.server start   #启动mysql服务
+2. 安装好依赖后，要确保mysql服务启动，如果未启动，会报错。启动mysql服务
+```mysql.server start```   
 
-#后直接运行 flask run 项目启动
+
+3. 直接运行 flask run 项目启动
 
 # 注意
 
@@ -19,7 +20,7 @@ mysql+pymysql://root(连接数据库的用户名):password(密码)@localhost:330
 
 
 
-#以下是关于本次项目的一些总结
+# 以下是关于本次项目的一些总结
 
 项目刚开始是先做好前端页面的，想着先把前端页面做出来，才能根据页面去生成页面需要的数据。前端页面本来是用html5 + js + css,写的，本来打算前端页面独立写，数据的话就用python写接口，然后前端直接调用接口，获取数据，即可。但，发现问题，由于之前用vue做了好几个项目，想着这个项目也用模板渲染引擎来写,去搜索找的模板渲染引擎art-template，写起来破费力，模板需要在js中生成，然后再用jq将模板插入到指定的元素中，发现这样子写起来不好重用，有些重复的地方，想着可以重用，即写一个模板，其他的直接调用这个模板即可，找到art-template,研究了几天，发现，重用方面有点复杂，直接放弃。想着之前有学过python的flask框架，直接用这个框架来实现前后台的页面即可，方面许多。且，flask里面包含jinjia2这个模板渲染引擎，可以直接使用模板语法，方便许多，故整个项目直接改用python的flask框架来实现，（若一开始直接用falsk框架来实现，就不用费怎么多劲了。。。）。
 
