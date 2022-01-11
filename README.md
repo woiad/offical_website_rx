@@ -49,47 +49,56 @@
 
 其他的页面直接用 `jinjia` 的继承来使用该模板。
 
-  ```{% extends 'home/layout.html' %}```
+  ```
+    {% extends 'home/layout.html' %}
+  ```
 
 > 提示:jinjia 的所有模板和页面必须位于tempaltes目录下，渲染页面时，会直接在templates目录下寻找相关的页面。
 
 然后，页面的内容则包含在 `block content` 里面
-  {% block content %}
-  页面的内容。。。
-  {% endblock %}
+ ``` 
+    {% block content %}
+    页面的内容。。。
+    {% endblock %}
+ ```
 
-接着就是修改页面的链接，页面的所有跳转直接在views.py中生成，html页面的a标签的跳转改用python的url_for()
+接着就是修改页面的链接，页面的所有跳转直接在 `views.py` 中生成，`html` 页面的 `a` 标签的跳转改用 `python`的 `url_for()`
 
-  <a href={{ url_for('index') }}></a>
+  ```
+     <a href={{ url_for('index') }}></a>
+  ```
   
-index就是views.py中定义渲染相关页面的函数名。
+`index` 就是 `views.py` 中定义渲染相关页面的函数名。
 
 页面改写完成。。。。
 
-接下来就要写项目的后台，需要写一个后台管理，来管理页面的内容，该后台管理可以实现数据的增、删、查、改。由于前端页面和后台管理界面位于同一应用下，必须想办法把这两块内容分割开来，让这两个项目独立开。这下子，python的蓝图就登场了，利用它可以进行模块化，把同一个应用下的不同内容分隔开，变成连个独立的项目，互不干扰。首先在app目录下定义连个目录home,admin,home是前端页面，admin，是后台管理页面。然后再分别在这两个目录下创init.py,form.py,view.py
-其中init.py,创建蓝图，form.py,定义相关的表单，views.py 定义视图的渲染和业务逻辑。（home 页面可以不用创建form.py）。
+接下来就要写项目的后台，需要写一个后台管理，来管理页面的内容，该后台管理可以实现数据的增、删、查、改。由于前端页面和后台管理界面位于同一应用下，必须想办法把这两块内容分割开来，让这两个项目独立开。这下子，`python` 的蓝图就登场了，利用它可以进行模块化，把同一个应用下的不同内容分隔开，变成连个独立的项目，互不干扰。首先在 `app` 目录下定义两个目录 `home`, `admin`, `home` 是前端页面，`admin`，是后台管理页面。然后再分别在这两个目录下创 `init.py`, `form.py`, `view.py`
+其中 `init.py`,创建蓝图; `form.py`,定义相关的表单; `views.py` 定义视图的渲染和业务逻辑。（`home` 页面可以不用创建 `form.py`）。
 
-app > admin > init.py
+```
+   app > admin > init.py
 
-  from flask import Blueprint
+   from flask import Blueprint
   
-  admin = Blueprint('admin', __name__)
+   admin = Blueprint('admin', __name__)
   
-  import app.admin.views
+   import app.admin.views
   
-app > home > init.py
+   app > home > init.py
 
-  from flask import Blueprint
+   from flask import Blueprint
   
-  home = Blueprint('home', __name__)
+   home = Blueprint('home', __name__)
 
-  import app.home.views
-  
-首先从flask中导入Blueprint（蓝图），接着蓝图实例化，第一个参数是蓝图的名字，第二个参数是一个python的特殊变量，表示当前的模块。之后导入需要使用蓝图
+   import app.home.views
+```
+
+首先从 `flask` 中导入 `Blueprint`（蓝图），接着蓝图实例化，第一个参数是蓝图的名字，第二个参数是一个 `python` 的特殊变量，表示当前的模块。之后导入需要使用蓝图
 的视图。
 
 相关目录结构
 
+```
 website/
   app/
     admin/
@@ -105,8 +114,10 @@ website/
       admin/
     init.py
   config.py
+```
 
-接下来要在全局变量app当中注册蓝图，才可以使用
+接下来要在全局变量 `app` 当中注册蓝图，才可以使用
+```
 app/init.py
 
   from .admin import admin as admin_blueprint
@@ -114,8 +125,9 @@ app/init.py
   
   app.register_blueprint(admin_blueprint)
   app.register_blueprint(home_blueprint)
-  
-先导入蓝图，然后在全局变量中注册蓝图，接着分别在admin/views.py和home/views.py中导入蓝图
+```
+
+先导入蓝图，然后在全局变量中注册蓝图，接着分别在 `admin/views.py` 和 `home/views.py` 中导入蓝图
 
   app/admin/views.py
   form . import admin
