@@ -3,15 +3,16 @@
 
 1. 克隆后先运行requirements.txt 文件安装项目的环境和依赖
 
-```pip install -r requirements.txt```
+> pip install -r requirements.txt
 
 2. 安装好依赖后，要确保mysql服务启动，如果未启动，会报错。启动mysql服务
 
-```mysql.server start```   
+> mysql.server start   
 
 
 3. 项目启动
-```flask run```
+
+> flask run
 
 # 注意
 
