@@ -2,17 +2,20 @@
 公司企业网 flask 实现 前端+后台
 
 1. 克隆后先运行requirements.txt 文件安装项目的环境和依赖
+
 ```pip install -r requirements.txt```
 
 2. 安装好依赖后，要确保mysql服务启动，如果未启动，会报错。启动mysql服务
+
 ```mysql.server start```   
 
 
-3. 直接运行 flask run 项目启动
+3. 项目启动
+```flask run```
 
 # 注意
 
-配置文件 config.py里面的SQLALCHEMY_DATABASE_URI配置的是数据库连接的
+配置文件 `config.py` 里面的 `SQLALCHEMY_DATABASE_URI` 配置的是数据库连接的
 
 mysql+pymysql://root(连接数据库的用户名):password(密码)@localhost:3306(地址:端口)/数据库名字
 
