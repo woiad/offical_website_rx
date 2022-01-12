@@ -222,18 +222,15 @@ app/init.py
 
 使用方法：
 
-  app/init.py
+  ```
+      #app/init.py
   
-    ```
       form flask_sqlalchemy import SQLALchemy
     
       app = Flask(app)
       db = SQLALchemy(app)
-   ```
    
-  condig.py
-  
-  ```
+    #condig.py
     #用于连接数据的数据库
     SQLALCHEMY_DATABASE_URL = 'mysql+pyslql://user:password@ddress:port/database_name'
     SQLALCHEMY_dATABASE_URL = 'mysql+pysql://root:123456@localhost:3306/website_data'
