@@ -231,7 +231,6 @@ app/init.py
       db = SQLALchemy(app)
    ```
    
-   
   condig.py
   
   ```
@@ -249,20 +248,22 @@ app/init.py
   
   app/models.py
   
-    from app import db
+    ```
+       from app import db
     
-    class Article(db.Model):
+       class Article(db.Model):
     
-    __tablename__ = 'article'
+       __tablename__ = 'article'
     
-    id = db.Column(db.Integer, primary_key=True) #对应数据库的id字段
-    title = db.Column(db.String(64), index=True, unique=True)  #对应数据库的title字段
-    info = db.Column(db.String(256))  #对应数据库的info字段
-    release_time = db.Column(db.String(128), index=True)  #对应数据库的release_time字段
-    click_count = db.Column(db.String(64), index=True)  #对应数据库的click_count字段
-    article_content = db.Column(db.Text)  #对应数据库的article_content字段
-    article_type = db.Column(db.Integer, index=True)  #对应数据库的article_type字段
-    cover_img = db.Column(db.String(64), index=True)  #对应数据库的cover_imgd字段
+       id = db.Column(db.Integer, primary_key=True) #对应数据库的id字段
+       title = db.Column(db.String(64), index=True, unique=True)  #对应数据库的title字段
+       info = db.Column(db.String(256))  #对应数据库的info字段
+       release_time = db.Column(db.String(128), index=True)  #对应数据库的release_time字段
+       click_count = db.Column(db.String(64), index=True)  #对应数据库的click_count字段
+       article_content = db.Column(db.Text)  #对应数据库的article_content字段
+       article_type = db.Column(db.Integer, index=True)  #对应数据库的article_type字段
+       cover_img = db.Column(db.String(64), index=True)  #对应数据库的cover_imgd字段
+    ```
     
   模型定义好了之后，需要使用的话，直接导入即可。
   
@@ -270,31 +271,35 @@ app/init.py
   
   app/admin/views.py
   
-  form app.models import Article
-  from app import db
-  from .from import articleForm  #编辑文章的form表单
-  from flask import render_template , url_for
+  ```
+     form app.models import Article
+     from app import db
+     from .from import articleForm  #编辑文章的form表单
+     from flask import render_template , url_for
   
-  @admin.route('/article_add')
-  def article_add():
-  form = articleForm()
-  if validate_on_submit  #点击提交时执行，且校验都通过
-      article = Article(title = form.data['title'], info = form.data['info'], release_time = form.data['release_time']
+     @admin.route('/article_add')
+     def article_add():
+     form = articleForm()
+     if validate_on_submit  #点击提交时执行，且校验都通过
+        article = Article(title = form.data['title'], info = form.data['info'], release_time = form.data['release_time']
                          click_count = form.data['click_count'], article_content = form.data['article_content']
                          article_type = form.data['article_type'], cover_img  =form.data['cover_img']
-      )
-      db.session.add(article) #Article实例化后，添加到session,
-      db.session.commit() #提交session,只有提交了session,数据库才有内容，如果只是把实例添加到session,而没有提交，数据库没内容
-      return redirect(url_for('admin.article_add', form=form))
-  return render_template('admin/article_add.html', form=from)
+        )
+        db.session.add(article) #Article实例化后，添加到session,
+        db.session.commit() #提交session,只有提交了session,数据库才有内容，如果只是把实例添加到session,而没有提交，数据库没内容
+        return redirect(url_for('admin.article_add', form=form))
+     return render_template('admin/article_add.html', form=from)
+   ```
   
-#说明一下,form.data[name],获取form表单的内容,nama就是表单字段的实例，这只是简单的实例，提交时还有一些逻辑处理，例如title不能重复，上传的图片的存储，图片的名字的修改等。
+说明一下,`form.data[name]`,获取 `form` 表单的内容, `nama` 就是表单字段的实例，这只是简单的实例，提交时还有一些逻辑处理，例如 `title` 不能重复，上传的图片的存储，图片的名字的修改等。
 
-模型一旦创建之后，就无法修改，即一旦你定义好了类，后期想要在增加字段时，这时候，直接在类哪里增加，是没用的，数据库里面是无法增加的，这时候，就需要用到数据库迁移了，flask_migrate,可以更新数据库，保证数据库的表跟相对应的类的同步。
+模型一旦创建之后，就无法修改，即一旦你定义好了类，后期想要在增加字段时，这时候，直接在类哪里增加，是没用的，数据库里面是无法增加的，这时候，就需要用到数据库迁移了，`flask_migrate`,可以更新数据库，保证数据库的表跟相对应的类的同步。
 
-安装 flask_migrate
+安装 `flask_migrate`
 
-pip install flask_migrate
+```
+   pip install flask_migrate
+```
 
 初始化：
 
