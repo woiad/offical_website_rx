@@ -337,12 +337,14 @@ app/init.py
   falsk db downgrade
 ```
 
-#只有删除，增加，修改字段时，数据库迁移才能使用
-#如果想要修改字段的数据类型的大小时，数据迁移也能使用，需要修改migrations里面的env.py文件
- context.configure(
-          …………
-          compare_type=True,  # 检查字段类型
-          )
+只有删除，增加，修改字段时，数据库迁移才能使用
+如果想要修改字段的数据类型的大小时，数据迁移也能使用，需要修改 `migrations` 里面的 `env.py` 文件
+ 
+
+ ```
+  context.configure(…………, compare_type=True,  # 检查字段类型)
+ ```
+
 修改之后即可。
 
 这样一来，数据的获取和储存都完成了，顿时松了一口气！！！
